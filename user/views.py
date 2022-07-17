@@ -8,7 +8,7 @@ from django.contrib.auth import login, logout, authenticate
 def user_logout(request):
     logout(request)
 
-    return redirect('profile')
+    return redirect('todo')
 
 
 def profile(request):
@@ -33,7 +33,7 @@ def user_login(request):
             if user:
                 login(request, user)
                 message = '登入成功!'
-                return redirect('profile')
+                return redirect('todo')
             else:
                 message = '登入失敗!'
 
@@ -68,6 +68,6 @@ def user_register(request):
                     user.save()
                     message = '註冊成功!'
                     login(request, user)
-                    return redirect('profile')
+                    return redirect('todo')
 
     return render(request, './user/register.html', {'form': form, 'message': message})
