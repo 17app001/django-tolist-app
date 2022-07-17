@@ -1,16 +1,43 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib.auth import login, logout, authenticate
 # Create your views here.
 
 
+def user_logout(request):
+    logout(request)
+
+    return redirect('profile')
+
+
+def profile(request):
+    print(request.user)
+    return render(request, './user/profile.html')
+
+
 def user_login(request):
+    message = ''
 
     if request.method == 'POST':
         if request.POST.get('register'):
             return redirect('register')
 
-    return render(request, './user/login.html')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        if username == '' or password == '':
+            message = '帳號跟密碼不能為空!'
+        else:
+            user = authenticate(username=username, password=password)
+            if user:
+                login(request, user)
+                message = '登入成功!'
+                return redirect('profile')
+            else:
+                message = '登入失敗!'
+
+    return render(request, './user/login.html', {'message': message})
 
 
 def user_register(request):
@@ -40,5 +67,7 @@ def user_register(request):
                 if user:
                     user.save()
                     message = '註冊成功!'
+                    login(request, user)
+                    return redirect('profile')
 
     return render(request, './user/register.html', {'form': form, 'message': message})
