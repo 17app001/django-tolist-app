@@ -5,8 +5,13 @@
 <ul>
   {% for todo in todos %}
   <li>
-    <a href="{%  url 'view' todo.id %}" target="_blank">
-      {{todo.title}}{% if todo.important %}(重要){% endif %}</a>
+    <a href="{%  url 'view' todo.id %}">
+      {% if todo.completed %}
+      <s>{{todo.title}}</s>
+      {% else %}
+      {{todo.title}}
+      {% endif %}
+      {% if todo.important %}(重要){% endif %}</a>
   </li>
   {% endfor %}
 </ul>

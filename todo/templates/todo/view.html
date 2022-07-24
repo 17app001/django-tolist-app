@@ -2,13 +2,16 @@
 
 <h1>View</h1>
 
-<h2>{{todo.title}}</h2>
-<ul>
-    <li>{{todo.text}}</li>
-    <li>{{todo.created}}</li>
-    <li>重要:{{todo.important}}</li>
-    <li>是否完成:{{todo.date_completed}}</li>
-</ul>
 
+<form action="" method="POST">
+    {% csrf_token %} {{form.as_p}}
+    {% if todo.date_completed %}
+    {{todo.date_completed}}<br>
+    {% endif %}
+    <input type="submit" name="update" value="修改"></button>
+    <input type="submit" name="delete" value="刪除"></button>
+</form>
+
+<p id="message">{{message}}</p>
 
 {% endblock %}

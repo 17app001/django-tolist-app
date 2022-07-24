@@ -26,10 +26,18 @@
       margin: 12px auto;
     }
 
-    .todo-link {
+    .todo-link1 {
+      display: inline-block;
+      text-align: center;
       background-color: orange;
       padding: 3px;
       border-radius: 3px;
+      width: 100px;
+    }
+
+    .todo-link2 {
+      padding: 4px;
+      background-color: rgb(245, 44, 44);
     }
   </style>
 </head>
@@ -41,7 +49,9 @@
       {% if user.is_authenticated %} Login:
       <a href="{% url 'profile' %}">{{user.username}}</a>
       <a href="{% url 'logout' %}">登出</a>
-      <a class="todo-link" href="{% url 'create' %}">新增todo</a>
+      <a class="todo-link1" href="{% url 'create' %}">新增todo</a>
+      <a class="todo-link1 todo-link2" href="{% url 'completed' %}">已完成todo</a>
+
       {% else %}
       <a href="{% url 'login' %}">登入</a>
       <a href="{% url 'register' %}">註冊</a>
