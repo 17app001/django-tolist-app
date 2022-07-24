@@ -3,11 +3,12 @@
 <h1>TodoList</h1>
 
 <ul>
-  {% for todo in todos %} {% if todo.important %}
-  <li style="color: blue; font-size: 24px">{{todo.title}}</li>
-  {% else %}
-  <li>{{todo.title}}</li>
-  {% endif %} {% endfor %}
+  {% for todo in todos %}
+  <li>
+    <a href="{%  url 'view' todo.id %}" target="_blank">
+      {{todo.title}}{% if todo.important %}(重要){% endif %}</a>
+  </li>
+  {% endfor %}
 </ul>
 
 {% endblock %}

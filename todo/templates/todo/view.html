@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>View</h1>
+
+<h2>{{todo.title}}</h2>
+<ul>
+    <li>{{todo.text}}</li>
+    <li>{{todo.created}}</li>
+    <li>重要:{{todo.important}}</li>
+    <li>是否完成:{{todo.date_completed}}</li>
+</ul>
+
+
+{% endblock %}
