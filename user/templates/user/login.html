@@ -1,17 +1,41 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Login</h1>
-    <form action="" method="POST">
-        {% csrf_token %}
-      <label for="username">帳號</label>
-      <input type="text" name="username" id="username" /><br />
-      <label for="password">密碼</label>
-      <input type="password" name="password" id="password" />
-        <p>
-      <input type="submit" name="login" value="登入"></button>
-      <input type="submit" name="register" value="註冊"></button>
-      <input type="reset" />
-    </p>
-    </form>
-    <p id="message">{{message}}</p>
+<section class="hero is-info is-fullheight-with-navbar">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <p class="title">
+        Login
+      </p>
+      <div class="columns is-centered">
+        <div class="column is-4 has-text-centered">
+          <form action="" method="POST" class="box">
+            {% csrf_token %}
+            <div class="field">
+              <label for="username" class="label">帳號</label>
+              <input class="input has-text-centered" type="text" name="username" id="username" />
+            </div>
+            <div class="field">
+              <label for="password" class="label">密碼</label>
+              <input class="input has-text-centered" type="password" name="password" id="password" />
+            </div>
+
+            <div class="field has-text-centered">
+              <input class="button is-primary is-normal" type="submit" name="login" value="登入"></button>
+              <input class="button is-warning is-normal" type="submit" name="register" value="註冊"></button>
+              <input class="button is-danger is-normal" type="reset" />
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-4">
+          <div class="notification is-warning" id="message">
+            <button class="delete"></button>
+            {{message}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}

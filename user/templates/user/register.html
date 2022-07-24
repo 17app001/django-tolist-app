@@ -1,8 +1,46 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Register</h1>
-<form action="" method="POST">
-  {% csrf_token %} {{form.as_p}}
-  <button type="submit">註冊</button>
-</form>
-<p id="message">{{message}}</p>
+
+<section class="hero is-info is-fullheight-with-navbar">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <p class="title">
+        Register
+      </p>
+      <div class="columns is-centered">
+        <div class="column is-6 has-text-centered">
+          <form action="" method="POST" class="box">
+            {% csrf_token %}
+            <div class="field">
+              <label for="username" class="label">帳號</label>
+              <input class="input has-text-centered" type="text" name="username" id="username" />
+            </div>
+            <div class="field">
+              <label for="password1" class="label">密碼</label>
+              <input class="input has-text-centered" type="password" name="password1" id="password1" />
+            </div>
+
+            <div class="field">
+              <label for="password2" class="label">確認密碼</label>
+              <input class="input has-text-centered" type="password" name="password2" id="password2" />
+            </div>
+
+            <div class="field has-text-centered">
+              <button class="button is-warning is-normal" type="submit">註冊</button>
+
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-4">
+          <div class="notification is-warning" id="message">
+            <button class="delete"></button>
+            {{message}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}
