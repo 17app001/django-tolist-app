@@ -12,7 +12,9 @@
             {{todo.title}}
             {% endif %}
             {% if todo.important %}(重要){% endif %}</a>
+        <a href="{% url 'delete' todo.id %}">刪除</a>
     </li>
+
     {% endfor %}
 </ul>
 
